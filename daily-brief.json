@@ -1,0 +1,134 @@
+{
+  "ok": true,
+  "feed_version": "CMM_GITHUB_DAILY_BRIEF_V1",
+  "source": "cmm-meta-monitor",
+  "report_date": "2026-08-15",
+  "generated_at": "2026-08-16T10:47:16.508Z",
+  "published_at": "2026-08-16T10:47:16.591590+00:00",
+  "source_health": {
+    "worker_ok": true,
+    "daily_brief_ok": true
+  },
+  "daily_brief": {
+    "version": "CMM_DAILY_BRIEF_V1",
+    "period": "last_72h",
+    "products": [
+      {
+        "product_code": "P07",
+        "sku": "AFF-ORGANISATEURSAVON",
+        "delivery_state": "ACTIVE",
+        "ads_active": 2,
+        "active_daily_budget": 12.75,
+        "budget_currency": "USD",
+        "lifetime": {
+          "since": "2026-08-05",
+          "until": "2026-08-15",
+          "decision": "INCONCLUSIVE",
+          "reason": "LIFETIME_SOURCE_UNAVAILABLE_OR_MISALIGNED",
+          "total_orders": 0,
+          "terminal_orders": 0,
+          "terminal_rate_pct": null,
+          "roi_delivered_pct": null,
+          "net_delivered_mad": null
+        },
+        "current_72h_decision": "TRACKING_FIX",
+        "action_ar": "راجع التتبع وربط Meta مع Fighters"
+      },
+      {
+        "product_code": "P10",
+        "sku": "10AVANDA",
+        "delivery_state": "ACTIVE",
+        "ads_active": 2,
+        "active_daily_budget": 8.25,
+        "budget_currency": "USD",
+        "lifetime": {
+          "since": "2026-08-11",
+          "until": "2026-08-15",
+          "decision": "INCONCLUSIVE",
+          "reason": "LIFETIME_SOURCE_UNAVAILABLE_OR_MISALIGNED",
+          "total_orders": 0,
+          "terminal_orders": 0,
+          "terminal_rate_pct": null,
+          "roi_delivered_pct": null,
+          "net_delivered_mad": null
+        },
+        "current_72h_decision": "TRACKING_FIX",
+        "action_ar": "راجع التتبع وربط Meta مع Fighters"
+      }
+    ],
+    "ads": [
+      {
+        "product_code": "P07",
+        "ad_name": "AD4 | VIDEO DEMO | UTILISATION | FR-V1",
+        "delivery": "ACTIVE",
+        "action": "KEEP",
+        "reason": "CPA_AT_OR_BELOW_PRODUCT",
+        "spend": 16.22,
+        "purchases": 4,
+        "cpa": 4.06,
+        "ctr_link": 1.83,
+        "landing_page_rate": 76.43
+      },
+      {
+        "product_code": "P07",
+        "ad_name": "AD5 | VIDEO DEMO | TACHES VETEMENTS | FR-V1",
+        "delivery": "ACTIVE",
+        "action": "COST_WATCH",
+        "reason": "CPA_ABOVE_PRODUCT",
+        "spend": 16.38,
+        "purchases": 1,
+        "cpa": 16.38,
+        "ctr_link": 2.17,
+        "landing_page_rate": 90.14
+      },
+      {
+        "product_code": "P10",
+        "ad_name": "AD1 | VIDEO | TRAVAIL | V1",
+        "delivery": "ACTIVE",
+        "action": "KEEP",
+        "reason": "CPA_AT_OR_BELOW_PRODUCT",
+        "spend": 10.22,
+        "purchases": 1,
+        "cpa": 10.22,
+        "ctr_link": 1.54,
+        "landing_page_rate": 84.06
+      },
+      {
+        "product_code": "P10",
+        "ad_name": "AD2 | IMAGE | PRODUIT LOCAL MAROCAIN | V1",
+        "delivery": "PAUSED",
+        "action": "KEEP_PAUSED",
+        "reason": "CURRENTLY_PAUSED",
+        "spend": 18.9,
+        "purchases": 0,
+        "cpa": null,
+        "ctr_link": 1.12,
+        "landing_page_rate": 60
+      },
+      {
+        "product_code": "P10",
+        "ad_name": "AD3 | CAROUSEL | STYLE DETAILS | V1",
+        "delivery": "ACTIVE",
+        "action": "INSUFFICIENT_DATA",
+        "reason": "INSUFFICIENT_72H_SIGNAL",
+        "spend": 0.05,
+        "purchases": 0,
+        "cpa": null,
+        "ctr_link": 5.26,
+        "landing_page_rate": 100
+      },
+      {
+        "product_code": "P07",
+        "ad_name": "AD6 | VIDEO DEMO | COMMENT CA MARCHE | FR-V1",
+        "delivery": "PAUSED",
+        "action": "KEEP_PAUSED",
+        "reason": "CURRENTLY_PAUSED",
+        "spend": 15.57,
+        "purchases": 0,
+        "cpa": null,
+        "ctr_link": 1.51,
+        "landing_page_rate": 86.21
+      }
+    ]
+  }
+}
