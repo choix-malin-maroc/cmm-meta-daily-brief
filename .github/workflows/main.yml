@@ -1,39 +1,375 @@
-name: CMM Worker Connectivity Test
+name: CMM Daily Meta Brief
 
 on:
   workflow_dispatch:
 
+  schedule:
+    - cron: "10 5 * * *"
+      timezone: "Africa/Casablanca"
+
 permissions:
   contents: write
 
+concurrency:
+  group: cmm-daily-meta-brief
+  cancel-in-progress: false
+
 jobs:
-  test-worker:
+  update-daily-brief:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v6
 
-      - name: Fetch Worker ping
+      - name: Fetch full CMM Worker report
         run: |
-          curl --fail --silent --show-error --location \
-            --max-time 30 \
-            "https://cmm-meta-monitor.choixmalinmaroc.workers.dev/task?ping=1" \
-            -o worker-test.json
+          curl \
+            --fail \
+            --silent \
+            --show-error \
+            --location \
+            --connect-timeout 20 \
+            --max-time 240 \
+            --retry 2 \
+            --retry-delay 5 \
+            --retry-all-errors \
+            "https://cmm-meta-monitor.choixmalinmaroc.workers.dev/" \
+            -o worker-full.json
 
-          cat worker-test.json
-
-      - name: Commit test result
+      - name: Build sanitized daily brief
         run: |
-          git config user.name "cmm-meta-bot"
-          git config user.email "actions@users.noreply.github.com"
+          python3 <<'PY'
+          import json
+          from datetime import datetime, timezone
 
-          git add worker-test.json
+          with open(
+              "worker-full.json",
+              "r",
+              encoding="utf-8"
+          ) as f:
+              source = json.load(f)
+
+          if source.get("ok") is not True:
+              raise SystemExit(
+                  "Worker returned ok != true"
+              )
+
+          report_date = source.get(
+              "report_date"
+          )
+
+          daily_brief = source.get(
+              "daily_brief"
+          )
+
+          if not report_date:
+              raise SystemExit(
+                  "Missing report_date"
+              )
+
+          if not isinstance(
+              daily_brief,
+              dict
+          ):
+              raise SystemExit(
+                  "Missing or invalid daily_brief"
+              )
+
+          # ==========================================
+          # PUBLIC WHITELIST — PRODUCTS
+          # ==========================================
+
+          safe_products = []
+
+          for product in daily_brief.get(
+              "products",
+              []
+          ):
+              if not isinstance(
+                  product,
+                  dict
+              ):
+                  continue
+
+              lifetime = (
+                  product.get("lifetime")
+                  or {}
+              )
+
+              safe_products.append({
+                  "product_code":
+                      product.get(
+                          "product_code"
+                      ),
+
+                  "sku":
+                      product.get(
+                          "sku"
+                      ),
+
+                  "delivery_state":
+                      product.get(
+                          "delivery_state"
+                      ),
+
+                  "ads_active":
+                      product.get(
+                          "ads_active"
+                      ),
+
+                  "active_daily_budget":
+                      product.get(
+                          "active_daily_budget"
+                      ),
+
+                  "budget_currency":
+                      product.get(
+                          "budget_currency"
+                      ),
+
+                  "lifetime": {
+                      "since":
+                          lifetime.get(
+                              "since"
+                          ),
+
+                      "until":
+                          lifetime.get(
+                              "until"
+                          ),
+
+                      "decision":
+                          lifetime.get(
+                              "decision"
+                          ),
+
+                      "reason":
+                          lifetime.get(
+                              "reason"
+                          ),
+
+                      "total_orders":
+                          lifetime.get(
+                              "total_orders"
+                          ),
+
+                      "terminal_orders":
+                          lifetime.get(
+                              "terminal_orders"
+                          ),
+
+                      "terminal_rate_pct":
+                          lifetime.get(
+                              "terminal_rate_pct"
+                          ),
+
+                      "roi_delivered_pct":
+                          lifetime.get(
+                              "roi_delivered_pct"
+                          ),
+
+                      "net_delivered_mad":
+                          lifetime.get(
+                              "net_delivered_mad"
+                          )
+                  },
+
+                  "current_72h_decision":
+                      product.get(
+                          "current_72h_decision"
+                      ),
+
+                  "action_ar":
+                      product.get(
+                          "action_ar"
+                      )
+              })
+
+          # ==========================================
+          # PUBLIC WHITELIST — ADS
+          # ==========================================
+
+          safe_ads = []
+
+          for ad in daily_brief.get(
+              "ads",
+              []
+          ):
+              if not isinstance(
+                  ad,
+                  dict
+              ):
+                  continue
+
+              safe_ads.append({
+                  "product_code":
+                      ad.get(
+                          "product_code"
+                      ),
+
+                  "ad_name":
+                      ad.get(
+                          "ad_name"
+                      ),
+
+                  "delivery":
+                      ad.get(
+                          "delivery"
+                      ),
+
+                  "action":
+                      ad.get(
+                          "action"
+                      ),
+
+                  "reason":
+                      ad.get(
+                          "reason"
+                      ),
+
+                  "spend":
+                      ad.get(
+                          "spend"
+                      ),
+
+                  "purchases":
+                      ad.get(
+                          "purchases"
+                      ),
+
+                  "cpa":
+                      ad.get(
+                          "cpa"
+                      ),
+
+                  "ctr_link":
+                      ad.get(
+                          "ctr_link"
+                      ),
+
+                  "landing_page_rate":
+                      ad.get(
+                          "landing_page_rate"
+                      )
+              })
+
+          # ==========================================
+          # FINAL PUBLIC FEED
+          # ==========================================
+
+          safe_daily_brief = {
+              "version":
+                  daily_brief.get(
+                      "version"
+                  ),
+
+              "period":
+                  daily_brief.get(
+                      "period"
+                  ),
+
+              "products":
+                  safe_products,
+
+              "ads":
+                  safe_ads
+          }
+
+          feed = {
+              "ok": True,
+
+              "feed_version":
+                  "CMM_GITHUB_DAILY_BRIEF_V1",
+
+              "source":
+                  "cmm-meta-monitor",
+
+              "report_date":
+                  report_date,
+
+              "generated_at":
+                  source.get(
+                      "generated_at"
+                  ),
+
+              "published_at":
+                  datetime.now(
+                      timezone.utc
+                  ).isoformat(),
+
+              "source_health": {
+                  "worker_ok": True,
+                  "daily_brief_ok": True
+              },
+
+              "daily_brief":
+                  safe_daily_brief
+          }
+
+          with open(
+              "daily-brief.json",
+              "w",
+              encoding="utf-8"
+          ) as f:
+              json.dump(
+                  feed,
+                  f,
+                  ensure_ascii=False,
+                  indent=2
+              )
+
+              f.write("\n")
+
+          print(
+              json.dumps(
+                  {
+                      "report_date":
+                          report_date,
+
+                      "products":
+                          len(
+                              safe_products
+                          ),
+
+                      "ads":
+                          len(
+                              safe_ads
+                          )
+                  },
+                  ensure_ascii=False
+              )
+          )
+          PY
+
+      - name: Remove temporary full report
+        run: |
+          rm -f worker-full.json
+
+      - name: Commit sanitized daily brief
+        run: |
+          git config \
+            user.name \
+            "cmm-meta-bot"
+
+          git config \
+            user.email \
+            "actions@users.noreply.github.com"
+
+          git add daily-brief.json
 
           if git diff --cached --quiet; then
             echo "No changes to commit"
             exit 0
           fi
 
-          git commit -m "Update Worker connectivity test"
-          git push
+          git commit \
+            -m "Update CMM daily Meta brief"
+
+          git pull \
+            --rebase \
+            origin main
+
+          git push \
+            origin HEAD:main
