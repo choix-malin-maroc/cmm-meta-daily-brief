@@ -3,8 +3,8 @@
   "feed_version": "CMM_GITHUB_DAILY_BRIEF_V1",
   "source": "cmm-meta-monitor",
   "report_date": "2026-08-15",
-  "generated_at": "2026-08-16T10:47:16.508Z",
-  "published_at": "2026-08-16T10:47:16.591590+00:00",
+  "generated_at": "2026-08-16T11:46:59.360Z",
+  "published_at": "2026-08-16T11:46:59.436411+00:00",
   "source_health": {
     "worker_ok": true,
     "daily_brief_ok": true
@@ -23,16 +23,16 @@
         "lifetime": {
           "since": "2026-08-05",
           "until": "2026-08-15",
-          "decision": "INCONCLUSIVE",
-          "reason": "LIFETIME_SOURCE_UNAVAILABLE_OR_MISALIGNED",
-          "total_orders": 0,
-          "terminal_orders": 0,
-          "terminal_rate_pct": null,
-          "roi_delivered_pct": null,
-          "net_delivered_mad": null
+          "decision": "PROVEN",
+          "reason": "DELIVERED_ROI_PROVEN",
+          "total_orders": 22,
+          "terminal_orders": 18,
+          "terminal_rate_pct": 81.8,
+          "roi_delivered_pct": 32.1,
+          "net_delivered_mad": 448.73
         },
-        "current_72h_decision": "TRACKING_FIX",
-        "action_ar": "راجع التتبع وربط Meta مع Fighters"
+        "current_72h_decision": "COST_OPTIMIZATION",
+        "action_ar": "استمر دون توسع واعمل على خفض تكلفة الطلب"
       },
       {
         "product_code": "P10",
@@ -45,15 +45,15 @@
           "since": "2026-08-11",
           "until": "2026-08-15",
           "decision": "INCONCLUSIVE",
-          "reason": "LIFETIME_SOURCE_UNAVAILABLE_OR_MISALIGNED",
-          "total_orders": 0,
-          "terminal_orders": 0,
-          "terminal_rate_pct": null,
-          "roi_delivered_pct": null,
-          "net_delivered_mad": null
+          "reason": "INSUFFICIENT_ORDER_SAMPLE",
+          "total_orders": 2,
+          "terminal_orders": 1,
+          "terminal_rate_pct": 50,
+          "roi_delivered_pct": -100,
+          "net_delivered_mad": -391.91
         },
-        "current_72h_decision": "TRACKING_FIX",
-        "action_ar": "راجع التتبع وربط Meta مع Fighters"
+        "current_72h_decision": "OBSERVE",
+        "action_ar": "راقب ولا تتخذ تعديلا كبيرا حاليا"
       }
     ],
     "ads": [
