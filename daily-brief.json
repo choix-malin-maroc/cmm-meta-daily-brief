@@ -2,9 +2,9 @@
   "ok": true,
   "feed_version": "CMM_GITHUB_DAILY_BRIEF_V1",
   "source": "cmm-meta-monitor",
-  "report_date": "2026-08-15",
-  "generated_at": "2026-08-16T11:46:59.360Z",
-  "published_at": "2026-08-16T11:46:59.436411+00:00",
+  "report_date": "2026-08-16",
+  "generated_at": "2026-08-17T05:54:41.356Z",
+  "published_at": "2026-08-17T05:54:41.424288+00:00",
   "source_health": {
     "worker_ok": true,
     "daily_brief_ok": true
@@ -22,17 +22,17 @@
         "budget_currency": "USD",
         "lifetime": {
           "since": "2026-08-05",
-          "until": "2026-08-15",
-          "decision": "PROVEN",
-          "reason": "DELIVERED_ROI_PROVEN",
-          "total_orders": 22,
-          "terminal_orders": 18,
-          "terminal_rate_pct": 81.8,
-          "roi_delivered_pct": 32.1,
-          "net_delivered_mad": 448.73
+          "until": "2026-08-16",
+          "decision": "INCONCLUSIVE",
+          "reason": "LIFETIME_SOURCE_UNAVAILABLE_OR_MISALIGNED",
+          "total_orders": 0,
+          "terminal_orders": 0,
+          "terminal_rate_pct": null,
+          "roi_delivered_pct": null,
+          "net_delivered_mad": null
         },
-        "current_72h_decision": "COST_OPTIMIZATION",
-        "action_ar": "استمر دون توسع واعمل على خفض تكلفة الطلب"
+        "current_72h_decision": "TRACKING_FIX",
+        "action_ar": "راجع التتبع وربط Meta مع Fighters"
       },
       {
         "product_code": "P10",
@@ -43,17 +43,17 @@
         "budget_currency": "USD",
         "lifetime": {
           "since": "2026-08-11",
-          "until": "2026-08-15",
+          "until": "2026-08-16",
           "decision": "INCONCLUSIVE",
-          "reason": "INSUFFICIENT_ORDER_SAMPLE",
-          "total_orders": 2,
-          "terminal_orders": 1,
-          "terminal_rate_pct": 50,
-          "roi_delivered_pct": -100,
-          "net_delivered_mad": -391.91
+          "reason": "LIFETIME_SOURCE_UNAVAILABLE_OR_MISALIGNED",
+          "total_orders": 0,
+          "terminal_orders": 0,
+          "terminal_rate_pct": null,
+          "roi_delivered_pct": null,
+          "net_delivered_mad": null
         },
-        "current_72h_decision": "OBSERVE",
-        "action_ar": "راقب ولا تتخذ تعديلا كبيرا حاليا"
+        "current_72h_decision": "TRACKING_FIX",
+        "action_ar": "راجع التتبع وربط Meta مع Fighters"
       }
     ],
     "ads": [
@@ -63,23 +63,23 @@
         "delivery": "ACTIVE",
         "action": "KEEP",
         "reason": "CPA_AT_OR_BELOW_PRODUCT",
-        "spend": 16.22,
-        "purchases": 4,
-        "cpa": 4.06,
-        "ctr_link": 1.83,
-        "landing_page_rate": 76.43
+        "spend": 17.72,
+        "purchases": 6,
+        "cpa": 2.95,
+        "ctr_link": 1.59,
+        "landing_page_rate": 71.72
       },
       {
         "product_code": "P07",
         "ad_name": "AD5 | VIDEO DEMO | TACHES VETEMENTS | FR-V1",
         "delivery": "ACTIVE",
-        "action": "COST_WATCH",
-        "reason": "CPA_ABOVE_PRODUCT",
-        "spend": 16.38,
-        "purchases": 1,
-        "cpa": 16.38,
-        "ctr_link": 2.17,
-        "landing_page_rate": 90.14
+        "action": "WATCH",
+        "reason": "CPA_SLIGHTLY_ABOVE_PRODUCT",
+        "spend": 16.99,
+        "purchases": 4,
+        "cpa": 4.25,
+        "ctr_link": 2.53,
+        "landing_page_rate": 90
       },
       {
         "product_code": "P10",
@@ -87,11 +87,11 @@
         "delivery": "ACTIVE",
         "action": "KEEP",
         "reason": "CPA_AT_OR_BELOW_PRODUCT",
-        "spend": 10.22,
-        "purchases": 1,
-        "cpa": 10.22,
-        "ctr_link": 1.54,
-        "landing_page_rate": 84.06
+        "spend": 20.37,
+        "purchases": 3,
+        "cpa": 6.79,
+        "ctr_link": 1.53,
+        "landing_page_rate": 86.15
       },
       {
         "product_code": "P10",
@@ -99,11 +99,11 @@
         "delivery": "PAUSED",
         "action": "KEEP_PAUSED",
         "reason": "CURRENTLY_PAUSED",
-        "spend": 18.9,
+        "spend": 8.23,
         "purchases": 0,
         "cpa": null,
-        "ctr_link": 1.12,
-        "landing_page_rate": 60
+        "ctr_link": 1.64,
+        "landing_page_rate": 62.79
       },
       {
         "product_code": "P10",
@@ -114,20 +114,20 @@
         "spend": 0.05,
         "purchases": 0,
         "cpa": null,
-        "ctr_link": 5.26,
+        "ctr_link": 6.67,
         "landing_page_rate": 100
       },
       {
         "product_code": "P07",
         "ad_name": "AD6 | VIDEO DEMO | COMMENT CA MARCHE | FR-V1",
-        "delivery": "PAUSED",
+        "delivery": "ADSET_CAMPAIGN_PAUSED",
         "action": "KEEP_PAUSED",
         "reason": "CURRENTLY_PAUSED",
-        "spend": 15.57,
-        "purchases": 0,
-        "cpa": null,
-        "ctr_link": 1.51,
-        "landing_page_rate": 86.21
+        "spend": 11.35,
+        "purchases": 1,
+        "cpa": 11.35,
+        "ctr_link": 1.73,
+        "landing_page_rate": 85.71
       }
     ]
   }
