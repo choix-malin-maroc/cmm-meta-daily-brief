@@ -42,6 +42,7 @@ jobs:
         run: |
           python3 <<'PY'
           import json
+          import os
           from datetime import datetime, timezone
 
           with open(
@@ -308,25 +309,53 @@ jobs:
                   safe_daily_brief
           }
 
-          with open(
-              "daily-brief.json",
-              "w",
-              encoding="utf-8"
-          ) as f:
-              json.dump(
-                  feed,
-                  f,
-                  ensure_ascii=False,
-                  indent=2
-              )
+          def write_json(
+              path,
+              payload
+          ):
+              with open(
+                  path,
+                  "w",
+                  encoding="utf-8"
+              ) as f:
+                  json.dump(
+                      payload,
+                      f,
+                      ensure_ascii=False,
+                      indent=2
+                  )
 
-              f.write("\n")
+                  f.write("\n")
+
+          # Latest feed
+          write_json(
+              "daily-brief.json",
+              feed
+          )
+
+          # Immutable dated feed
+          os.makedirs(
+              "reports",
+              exist_ok=True
+          )
+
+          dated_path = (
+              f"reports/{report_date}.json"
+          )
+
+          write_json(
+              dated_path,
+              feed
+          )
 
           print(
               json.dumps(
                   {
                       "report_date":
                           report_date,
+
+                      "dated_file":
+                          dated_path,
 
                       "products":
                           len(
@@ -357,7 +386,9 @@ jobs:
             user.email \
             "actions@users.noreply.github.com"
 
-          git add daily-brief.json
+          git add \
+            daily-brief.json \
+            reports/
 
           if git diff --cached --quiet; then
             echo "No changes to commit"
