@@ -2,9 +2,9 @@
   "ok": true,
   "feed_version": "CMM_GITHUB_DAILY_BRIEF_V1",
   "source": "cmm-meta-monitor",
-  "report_date": "2026-08-16",
-  "generated_at": "2026-08-17T05:54:41.356Z",
-  "published_at": "2026-08-17T05:54:41.424288+00:00",
+  "report_date": "2026-08-17",
+  "generated_at": "2026-08-18T05:17:17.779Z",
+  "published_at": "2026-08-18T05:17:17.841616+00:00",
   "source_health": {
     "worker_ok": true,
     "daily_brief_ok": true
@@ -22,7 +22,7 @@
         "budget_currency": "USD",
         "lifetime": {
           "since": "2026-08-05",
-          "until": "2026-08-16",
+          "until": "2026-08-17",
           "decision": "INCONCLUSIVE",
           "reason": "LIFETIME_SOURCE_UNAVAILABLE_OR_MISALIGNED",
           "total_orders": 0,
@@ -43,7 +43,7 @@
         "budget_currency": "USD",
         "lifetime": {
           "since": "2026-08-11",
-          "until": "2026-08-16",
+          "until": "2026-08-17",
           "decision": "INCONCLUSIVE",
           "reason": "LIFETIME_SOURCE_UNAVAILABLE_OR_MISALIGNED",
           "total_orders": 0,
@@ -63,23 +63,23 @@
         "delivery": "ACTIVE",
         "action": "KEEP",
         "reason": "CPA_AT_OR_BELOW_PRODUCT",
-        "spend": 17.72,
+        "spend": 18.54,
         "purchases": 6,
-        "cpa": 2.95,
-        "ctr_link": 1.59,
-        "landing_page_rate": 71.72
+        "cpa": 3.09,
+        "ctr_link": 1.49,
+        "landing_page_rate": 66.52
       },
       {
         "product_code": "P07",
         "ad_name": "AD5 | VIDEO DEMO | TACHES VETEMENTS | FR-V1",
         "delivery": "ACTIVE",
-        "action": "WATCH",
-        "reason": "CPA_SLIGHTLY_ABOVE_PRODUCT",
-        "spend": 16.99,
-        "purchases": 4,
-        "cpa": 4.25,
-        "ctr_link": 2.53,
-        "landing_page_rate": 90
+        "action": "COST_WATCH",
+        "reason": "CPA_ABOVE_PRODUCT",
+        "spend": 16.86,
+        "purchases": 3,
+        "cpa": 5.62,
+        "ctr_link": 2.25,
+        "landing_page_rate": 91.55
       },
       {
         "product_code": "P10",
@@ -87,11 +87,11 @@
         "delivery": "ACTIVE",
         "action": "KEEP",
         "reason": "CPA_AT_OR_BELOW_PRODUCT",
-        "spend": 20.37,
+        "spend": 24.59,
         "purchases": 3,
-        "cpa": 6.79,
-        "ctr_link": 1.53,
-        "landing_page_rate": 86.15
+        "cpa": 8.2,
+        "ctr_link": 1.4,
+        "landing_page_rate": 87.41
       },
       {
         "product_code": "P10",
@@ -99,11 +99,11 @@
         "delivery": "PAUSED",
         "action": "KEEP_PAUSED",
         "reason": "CURRENTLY_PAUSED",
-        "spend": 8.23,
+        "spend": 0.55,
         "purchases": 0,
         "cpa": null,
-        "ctr_link": 1.64,
-        "landing_page_rate": 62.79
+        "ctr_link": 1.09,
+        "landing_page_rate": 66.67
       },
       {
         "product_code": "P10",
@@ -111,10 +111,10 @@
         "delivery": "ACTIVE",
         "action": "INSUFFICIENT_DATA",
         "reason": "INSUFFICIENT_72H_SIGNAL",
-        "spend": 0.05,
+        "spend": 0.08,
         "purchases": 0,
         "cpa": null,
-        "ctr_link": 6.67,
+        "ctr_link": 5.56,
         "landing_page_rate": 100
       },
       {
@@ -123,11 +123,11 @@
         "delivery": "ADSET_CAMPAIGN_PAUSED",
         "action": "KEEP_PAUSED",
         "reason": "CURRENTLY_PAUSED",
-        "spend": 11.35,
+        "spend": 4.47,
         "purchases": 1,
-        "cpa": 11.35,
-        "ctr_link": 1.73,
-        "landing_page_rate": 85.71
+        "cpa": 4.47,
+        "ctr_link": 1.83,
+        "landing_page_rate": 100
       }
     ]
   }
