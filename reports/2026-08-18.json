@@ -3,8 +3,8 @@
   "feed_version": "CMM_GITHUB_DAILY_BRIEF_V1",
   "source": "cmm-meta-monitor",
   "report_date": "2026-08-18",
-  "generated_at": "2026-08-19T07:27:04.654Z",
-  "published_at": "2026-08-19T07:27:04.737717+00:00",
+  "generated_at": "2026-08-19T08:06:05.889Z",
+  "published_at": "2026-08-19T08:06:05.959615+00:00",
   "source_health": {
     "worker_ok": true,
     "daily_brief_ok": true
@@ -29,7 +29,7 @@
           "terminal_orders": 24,
           "terminal_rate_pct": 77.4,
           "roi_delivered_pct": 26.7,
-          "net_delivered_mad": 473.15
+          "net_delivered_mad": 473.06
         },
         "current_72h_decision": "OBSERVE",
         "action_ar": "راقب ولا تتخذ تعديلا كبيرا حاليا"
@@ -49,8 +49,8 @@
           "total_orders": 4,
           "terminal_orders": 3,
           "terminal_rate_pct": 75,
-          "roi_delivered_pct": -54.2,
-          "net_delivered_mad": -341.42
+          "roi_delivered_pct": -54.3,
+          "net_delivered_mad": -341.52
         },
         "current_72h_decision": "OBSERVE",
         "action_ar": "راقب ولا تتخذ تعديلا كبيرا حاليا"
@@ -63,9 +63,9 @@
         "delivery": "ACTIVE",
         "action": "KEEP",
         "reason": "CPA_AT_OR_BELOW_PRODUCT",
-        "spend": 20.9,
+        "spend": 20.91,
         "purchases": 6,
-        "cpa": 3.48,
+        "cpa": 3.49,
         "ctr_link": 1.27,
         "landing_page_rate": 63.91
       },
@@ -99,10 +99,10 @@
         "delivery": "ACTIVE",
         "action": "INSUFFICIENT_DATA",
         "reason": "INSUFFICIENT_72H_SIGNAL",
-        "spend": 1.33,
+        "spend": 1.34,
         "purchases": 0,
         "cpa": null,
-        "ctr_link": 3.56,
+        "ctr_link": 3.54,
         "landing_page_rate": 73.91
       },
       {
