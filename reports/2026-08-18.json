@@ -3,8 +3,8 @@
   "feed_version": "CMM_GITHUB_DAILY_BRIEF_V1",
   "source": "cmm-meta-monitor",
   "report_date": "2026-08-18",
-  "generated_at": "2026-08-19T06:05:51.274Z",
-  "published_at": "2026-08-19T06:05:51.359550+00:00",
+  "generated_at": "2026-08-19T07:27:04.654Z",
+  "published_at": "2026-08-19T07:27:04.737717+00:00",
   "source_health": {
     "worker_ok": true,
     "daily_brief_ok": true
@@ -23,16 +23,16 @@
         "lifetime": {
           "since": "2026-08-05",
           "until": "2026-08-18",
-          "decision": "INCONCLUSIVE",
-          "reason": "LIFETIME_SOURCE_UNAVAILABLE_OR_MISALIGNED",
-          "total_orders": 0,
-          "terminal_orders": 0,
-          "terminal_rate_pct": null,
-          "roi_delivered_pct": null,
-          "net_delivered_mad": null
+          "decision": "PROVEN",
+          "reason": "DELIVERED_ROI_PROVEN",
+          "total_orders": 31,
+          "terminal_orders": 24,
+          "terminal_rate_pct": 77.4,
+          "roi_delivered_pct": 26.7,
+          "net_delivered_mad": 473.15
         },
-        "current_72h_decision": "TRACKING_FIX",
-        "action_ar": "راجع التتبع وربط Meta مع Fighters"
+        "current_72h_decision": "OBSERVE",
+        "action_ar": "راقب ولا تتخذ تعديلا كبيرا حاليا"
       },
       {
         "product_code": "P10",
@@ -45,15 +45,15 @@
           "since": "2026-08-11",
           "until": "2026-08-18",
           "decision": "INCONCLUSIVE",
-          "reason": "LIFETIME_SOURCE_UNAVAILABLE_OR_MISALIGNED",
-          "total_orders": 0,
-          "terminal_orders": 0,
-          "terminal_rate_pct": null,
-          "roi_delivered_pct": null,
-          "net_delivered_mad": null
+          "reason": "INSUFFICIENT_ORDER_SAMPLE",
+          "total_orders": 4,
+          "terminal_orders": 3,
+          "terminal_rate_pct": 75,
+          "roi_delivered_pct": -54.2,
+          "net_delivered_mad": -341.42
         },
-        "current_72h_decision": "TRACKING_FIX",
-        "action_ar": "راجع التتبع وربط Meta مع Fighters"
+        "current_72h_decision": "OBSERVE",
+        "action_ar": "راقب ولا تتخذ تعديلا كبيرا حاليا"
       }
     ],
     "ads": [
@@ -102,7 +102,7 @@
         "spend": 1.33,
         "purchases": 0,
         "cpa": null,
-        "ctr_link": 3.59,
+        "ctr_link": 3.56,
         "landing_page_rate": 73.91
       },
       {
