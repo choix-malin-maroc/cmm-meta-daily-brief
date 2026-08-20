@@ -3,8 +3,8 @@
   "feed_version": "CMM_GITHUB_DAILY_BRIEF_V1",
   "source": "cmm-meta-monitor",
   "report_date": "2026-08-19",
-  "generated_at": "2026-08-20T07:29:39.750Z",
-  "published_at": "2026-08-20T07:29:39.801154+00:00",
+  "generated_at": "2026-08-20T08:08:20.730Z",
+  "published_at": "2026-08-20T08:08:20.795797+00:00",
   "source_health": {
     "worker_ok": true,
     "daily_brief_ok": true
