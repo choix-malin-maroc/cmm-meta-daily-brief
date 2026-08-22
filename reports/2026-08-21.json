@@ -3,8 +3,8 @@
   "feed_version": "CMM_GITHUB_DAILY_BRIEF_V1",
   "source": "cmm-meta-monitor",
   "report_date": "2026-08-21",
-  "generated_at": "2026-08-22T06:01:20.714Z",
-  "published_at": "2026-08-22T06:01:20.785875+00:00",
+  "generated_at": "2026-08-22T07:49:31.386Z",
+  "published_at": "2026-08-22T07:49:31.515939+00:00",
   "source_health": {
     "worker_ok": true,
     "daily_brief_ok": true
@@ -17,8 +17,8 @@
         "product_code": "P07",
         "sku": "AFF-ORGANISATEURSAVON",
         "delivery_state": "ACTIVE",
-        "ads_active": 1,
-        "active_daily_budget": 12.75,
+        "ads_active": 2,
+        "active_daily_budget": 19.5,
         "budget_currency": "USD",
         "lifetime": {
           "since": "2026-08-05",
@@ -50,7 +50,7 @@
           "terminal_orders": 3,
           "terminal_rate_pct": 60,
           "roi_delivered_pct": -67.4,
-          "net_delivered_mad": -596.32
+          "net_delivered_mad": -596.42
         },
         "current_72h_decision": "OBSERVE",
         "action_ar": "راقب ولا تتخذ تعديلا كبيرا حاليا"
@@ -60,9 +60,9 @@
       {
         "product_code": "P07",
         "ad_name": "AD4 | VIDEO DEMO | UTILISATION | FR-V1",
-        "delivery": "ADSET_PAUSED",
-        "action": "KEEP_PAUSED",
-        "reason": "CURRENTLY_PAUSED",
+        "delivery": "ACTIVE",
+        "action": "COST_WATCH",
+        "reason": "CPA_ABOVE_PRODUCT",
         "spend": 15.91,
         "purchases": 1,
         "cpa": 15.91,
@@ -99,9 +99,9 @@
         "delivery": "ACTIVE",
         "action": "KEEP",
         "reason": "CPA_AT_OR_BELOW_PRODUCT",
-        "spend": 19.87,
+        "spend": 19.88,
         "purchases": 1,
-        "cpa": 19.87,
+        "cpa": 19.88,
         "ctr_link": 2.14,
         "landing_page_rate": 75
       },
