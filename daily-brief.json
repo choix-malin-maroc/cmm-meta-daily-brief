@@ -3,8 +3,8 @@
   "feed_version": "CMM_GITHUB_DAILY_BRIEF_V1",
   "source": "cmm-meta-monitor",
   "report_date": "2026-08-22",
-  "generated_at": "2026-08-23T06:03:51.193Z",
-  "published_at": "2026-08-23T06:03:51.265761+00:00",
+  "generated_at": "2026-08-23T07:52:27.185Z",
+  "published_at": "2026-08-23T07:52:27.250331+00:00",
   "source_health": {
     "worker_ok": true,
     "daily_brief_ok": true
@@ -18,7 +18,7 @@
         "sku": "AFF-ORGANISATEURSAVON",
         "delivery_state": "ACTIVE",
         "ads_active": 2,
-        "active_daily_budget": 19.5,
+        "active_daily_budget": 8.75,
         "budget_currency": "USD",
         "lifetime": {
           "since": "2026-08-05",
@@ -37,9 +37,9 @@
       {
         "product_code": "P10",
         "sku": "10AVANDA",
-        "delivery_state": "ACTIVE",
-        "ads_active": 2,
-        "active_daily_budget": 8.25,
+        "delivery_state": "NOT_DELIVERING",
+        "ads_active": 0,
+        "active_daily_budget": 0,
         "budget_currency": "USD",
         "lifetime": {
           "since": "2026-08-11",
@@ -52,8 +52,8 @@
           "roi_delivered_pct": -69.6,
           "net_delivered_mad": -658.48
         },
-        "current_72h_decision": "LANDING_PAGE_FIX",
-        "action_ar": "راجع صفحة الهبوط قبل زيادة الإنفاق"
+        "current_72h_decision": "OBSERVE",
+        "action_ar": "راقب ولا تتخذ تعديلا كبيرا حاليا"
       }
     ],
     "ads": [
@@ -84,9 +84,9 @@
       {
         "product_code": "P10",
         "ad_name": "AD1 | VIDEO | TRAVAIL | V1",
-        "delivery": "ACTIVE",
-        "action": "WATCH",
-        "reason": "TRAFFIC_SIGNAL_NO_PURCHASE_YET",
+        "delivery": "ADSET_CAMPAIGN_PAUSED",
+        "action": "KEEP_PAUSED",
+        "reason": "CURRENTLY_PAUSED",
         "spend": 3.66,
         "purchases": 0,
         "cpa": null,
@@ -96,9 +96,9 @@
       {
         "product_code": "P10",
         "ad_name": "AD3 | CAROUSEL | STYLE DETAILS | V1",
-        "delivery": "ACTIVE",
-        "action": "WATCH",
-        "reason": "TRAFFIC_SIGNAL_NO_PURCHASE_YET",
+        "delivery": "ADSET_CAMPAIGN_PAUSED",
+        "action": "KEEP_PAUSED",
+        "reason": "CURRENTLY_PAUSED",
         "spend": 18.64,
         "purchases": 0,
         "cpa": null,
