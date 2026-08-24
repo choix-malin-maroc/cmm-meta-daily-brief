@@ -3,8 +3,8 @@
   "feed_version": "CMM_GITHUB_DAILY_BRIEF_V1",
   "source": "cmm-meta-monitor",
   "report_date": "2026-08-23",
-  "generated_at": "2026-08-24T06:06:23.360Z",
-  "published_at": "2026-08-24T06:06:23.425152+00:00",
+  "generated_at": "2026-08-24T08:07:04.017Z",
+  "published_at": "2026-08-24T08:07:04.079021+00:00",
   "source_health": {
     "worker_ok": true,
     "daily_brief_ok": true
@@ -18,7 +18,7 @@
         "sku": "AFF-ORGANISATEURSAVON",
         "delivery_state": "ACTIVE",
         "ads_active": 2,
-        "active_daily_budget": 8.75,
+        "active_daily_budget": 10.75,
         "budget_currency": "USD",
         "lifetime": {
           "since": "2026-08-05",
@@ -29,7 +29,7 @@
           "terminal_orders": 27,
           "terminal_rate_pct": 69.2,
           "roi_delivered_pct": 2.6,
-          "net_delivered_mad": 64.37
+          "net_delivered_mad": 63.98
         },
         "current_72h_decision": "OBSERVE",
         "action_ar": "راقب ولا تتخذ تعديلا كبيرا حاليا"
@@ -63,9 +63,9 @@
         "delivery": "ACTIVE",
         "action": "KEEP",
         "reason": "CPA_AT_OR_BELOW_PRODUCT",
-        "spend": 22.06,
+        "spend": 22.1,
         "purchases": 3,
-        "cpa": 7.35,
+        "cpa": 7.37,
         "ctr_link": 0.96,
         "landing_page_rate": 60.26
       },
