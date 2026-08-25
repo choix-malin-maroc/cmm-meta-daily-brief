@@ -3,8 +3,8 @@
   "feed_version": "CMM_GITHUB_DAILY_BRIEF_V1",
   "source": "cmm-meta-monitor",
   "report_date": "2026-08-24",
-  "generated_at": "2026-08-25T05:53:21.446Z",
-  "published_at": "2026-08-25T05:53:21.498079+00:00",
+  "generated_at": "2026-08-25T07:33:19.519Z",
+  "published_at": "2026-08-25T07:33:19.588393+00:00",
   "source_health": {
     "worker_ok": true,
     "daily_brief_ok": true
@@ -18,7 +18,7 @@
         "sku": "AFF-ORGANISATEURSAVON",
         "delivery_state": "ACTIVE",
         "ads_active": 2,
-        "active_daily_budget": 10.75,
+        "active_daily_budget": 9.75,
         "budget_currency": "USD",
         "lifetime": {
           "since": "2026-08-05",
