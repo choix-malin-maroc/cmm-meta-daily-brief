@@ -4,13 +4,13 @@ on:
   workflow_dispatch:
 
   schedule:
-    - cron: "17 5 * * *"
+    # Multiple retry windows because GitHub scheduled jobs are not guaranteed
+    # to start exactly on time.
+    - cron: "17,37,57 5-9 * * *"
       timezone: "Africa/Casablanca"
 
-    - cron: "17 6 * * *"
-      timezone: "Africa/Casablanca"
-
-    - cron: "17 7 * * *"
+    # Final safety attempt before the CMM daily analysis.
+    - cron: "11 10 * * *"
       timezone: "Africa/Casablanca"
 
 permissions:
@@ -26,10 +26,95 @@ jobs:
     timeout-minutes: 10
 
     steps:
-      - name: Checkout repository
+
+      # ==========================================================
+      # 1. CHECKOUT
+      # ==========================================================
+
+      - name: Checkout latest main
         uses: actions/checkout@v6
+        with:
+          ref: main
+          fetch-depth: 0
+
+      # ==========================================================
+      # 2. DETERMINE TARGET DATE + DEDUPLICATION
+      # ==========================================================
+
+      - name: Check if yesterday report already exists
+        id: preflight
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          git pull --ff-only origin main
+
+          TARGET_DATE="$(TZ=Africa/Casablanca date -d 'yesterday' +%F)"
+          export TARGET_DATE
+
+          echo "TARGET_DATE=$TARGET_DATE" >> "$GITHUB_ENV"
+
+          python3 <<'PY'
+          import json
+          import os
+          from pathlib import Path
+
+          target = os.environ["TARGET_DATE"]
+          path = Path("reports") / f"{target}.json"
+
+          valid = False
+
+          if path.exists():
+              try:
+                  data = json.loads(
+                      path.read_text(
+                          encoding="utf-8"
+                      )
+                  )
+
+                  health = (
+                      data.get("source_health")
+                      or {}
+                  )
+
+                  valid = (
+                      data.get("ok") is True
+                      and data.get("report_date") == target
+                      and health.get("worker_ok") is True
+                      and health.get("daily_brief_ok") is True
+                  )
+
+              except Exception as exc:
+                  print(
+                      f"Existing report validation error: {exc}"
+                  )
+                  valid = False
+
+          with open(
+              os.environ["GITHUB_OUTPUT"],
+              "a",
+              encoding="utf-8"
+          ) as f:
+              f.write(
+                  f"skip={'true' if valid else 'false'}\n"
+              )
+
+          if valid:
+              print(
+                  f"Valid report already exists: {path}"
+              )
+          else:
+              print(
+                  f"Report needs publishing: {path}"
+              )
+          PY
+
+      # ==========================================================
+      # 3. FETCH WORKER
+      # ==========================================================
 
       - name: Fetch full CMM Worker report
+        if: steps.preflight.outputs.skip != 'true'
         run: |
           curl \
             --fail \
@@ -38,18 +123,28 @@ jobs:
             --location \
             --connect-timeout 20 \
             --max-time 240 \
-            --retry 2 \
+            --retry 4 \
             --retry-delay 5 \
             --retry-all-errors \
             "https://cmm-meta-monitor.choixmalinmaroc.workers.dev/" \
             -o worker-full.json
 
+      # ==========================================================
+      # 4. BUILD SANITIZED DAILY BRIEF
+      # ==========================================================
+
       - name: Build sanitized daily brief
+        if: steps.preflight.outputs.skip != 'true'
         run: |
           python3 <<'PY'
           import json
           import os
           from datetime import datetime, timezone
+
+
+          # ======================================================
+          # READ WORKER RESPONSE
+          # ======================================================
 
           with open(
               "worker-full.json",
@@ -58,22 +153,45 @@ jobs:
           ) as f:
               source = json.load(f)
 
+
           if source.get("ok") is not True:
               raise SystemExit(
                   "Worker returned ok != true"
               )
 
+
           report_date = source.get(
               "report_date"
+          )
+
+          target_date = os.environ.get(
+              "TARGET_DATE"
           )
 
           daily_brief = source.get(
               "daily_brief"
           )
 
+
+          # ======================================================
+          # SOURCE VALIDATION
+          # ======================================================
+
           if not report_date:
               raise SystemExit(
                   "Missing report_date"
+              )
+
+          if not target_date:
+              raise SystemExit(
+                  "Missing TARGET_DATE"
+              )
+
+          if report_date != target_date:
+              raise SystemExit(
+                  "Worker report_date mismatch: "
+                  f"expected {target_date}, "
+                  f"got {report_date}"
               )
 
           if not isinstance(
@@ -84,9 +202,10 @@ jobs:
                   "Missing or invalid daily_brief"
               )
 
-          # ==========================================
+
+          # ======================================================
           # PUBLIC WHITELIST — PRODUCTS
-          # ==========================================
+          # ======================================================
 
           safe_products = []
 
@@ -94,6 +213,7 @@ jobs:
               "products",
               []
           ):
+
               if not isinstance(
                   product,
                   dict
@@ -106,6 +226,7 @@ jobs:
               )
 
               safe_products.append({
+
                   "product_code":
                       product.get(
                           "product_code"
@@ -137,6 +258,7 @@ jobs:
                       ),
 
                   "lifetime": {
+
                       "since":
                           lifetime.get(
                               "since"
@@ -194,9 +316,10 @@ jobs:
                       )
               })
 
-          # ==========================================
+
+          # ======================================================
           # PUBLIC WHITELIST — ADS
-          # ==========================================
+          # ======================================================
 
           safe_ads = []
 
@@ -204,6 +327,7 @@ jobs:
               "ads",
               []
           ):
+
               if not isinstance(
                   ad,
                   dict
@@ -211,6 +335,7 @@ jobs:
                   continue
 
               safe_ads.append({
+
                   "product_code":
                       ad.get(
                           "product_code"
@@ -262,11 +387,13 @@ jobs:
                       )
               })
 
-          # ==========================================
-          # FINAL PUBLIC FEED
-          # ==========================================
+
+          # ======================================================
+          # FINAL PUBLIC DAILY BRIEF
+          # ======================================================
 
           safe_daily_brief = {
+
               "version":
                   daily_brief.get(
                       "version"
@@ -284,7 +411,9 @@ jobs:
                   safe_ads
           }
 
+
           feed = {
+
               "ok": True,
 
               "feed_version":
@@ -315,15 +444,22 @@ jobs:
                   safe_daily_brief
           }
 
+
+          # ======================================================
+          # WRITE FILES
+          # ======================================================
+
           def write_json(
               path,
               payload
           ):
+
               with open(
                   path,
                   "w",
                   encoding="utf-8"
               ) as f:
+
                   json.dump(
                       payload,
                       f,
@@ -333,13 +469,17 @@ jobs:
 
                   f.write("\n")
 
-          # Latest feed
+
+          # Latest public feed
+
           write_json(
               "daily-brief.json",
               feed
           )
 
-          # Immutable dated feed
+
+          # Immutable dated report
+
           os.makedirs(
               "reports",
               exist_ok=True
@@ -353,6 +493,7 @@ jobs:
               dated_path,
               feed
           )
+
 
           print(
               json.dumps(
@@ -376,13 +517,71 @@ jobs:
                   ensure_ascii=False
               )
           )
+
           PY
 
+      # ==========================================================
+      # 5. VALIDATE GENERATED REPORT
+      # ==========================================================
+
+      - name: Validate generated dated report
+        if: steps.preflight.outputs.skip != 'true'
+        run: |
+          python3 <<'PY'
+          import json
+          import os
+
+          target = os.environ["TARGET_DATE"]
+
+          path = (
+              f"reports/{target}.json"
+          )
+
+          with open(
+              path,
+              "r",
+              encoding="utf-8"
+          ) as f:
+              data = json.load(f)
+
+          health = (
+              data.get("source_health")
+              or {}
+          )
+
+          valid = (
+              data.get("ok") is True
+              and data.get("report_date") == target
+              and health.get("worker_ok") is True
+              and health.get("daily_brief_ok") is True
+          )
+
+          if not valid:
+              raise SystemExit(
+                  "Generated dated report failed validation"
+              )
+
+          print(
+              f"Validated successfully: {path}"
+          )
+
+          PY
+
+      # ==========================================================
+      # 6. REMOVE PRIVATE TEMPORARY WORKER DATA
+      # ==========================================================
+
       - name: Remove temporary full report
+        if: always() && steps.preflight.outputs.skip != 'true'
         run: |
           rm -f worker-full.json
 
+      # ==========================================================
+      # 7. COMMIT PUBLIC SANITIZED REPORT
+      # ==========================================================
+
       - name: Commit sanitized daily brief
+        if: steps.preflight.outputs.skip != 'true'
         run: |
           git config \
             user.name \
