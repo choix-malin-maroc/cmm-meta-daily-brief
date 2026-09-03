@@ -3,8 +3,8 @@
   "feed_version": "CMM_GITHUB_DAILY_BRIEF_V1",
   "source": "cmm-meta-monitor",
   "report_date": "2026-09-02",
-  "generated_at": "2026-09-03T05:36:51.146Z",
-  "published_at": "2026-09-03T05:36:51.216720+00:00",
+  "generated_at": "2026-09-03T13:43:52.708Z",
+  "published_at": "2026-09-03T13:43:52.779093+00:00",
   "source_health": {
     "worker_ok": true,
     "daily_brief_ok": true
@@ -29,7 +29,7 @@
           "terminal_orders": 41,
           "terminal_rate_pct": 83.7,
           "roi_delivered_pct": -5.7,
-          "net_delivered_mad": -196.8
+          "net_delivered_mad": -196.89
         },
         "current_72h_decision": "LANDING_PAGE_FIX",
         "action_ar": "راجع صفحة الهبوط قبل زيادة الإنفاق"
@@ -78,7 +78,7 @@
       },
       {
         "product_code": "P13",
-        "sku": null,
+        "sku": "T0013",
         "delivery_state": "ACTIVE",
         "ads_active": 3,
         "active_daily_budget": 7,
@@ -87,15 +87,15 @@
           "since": "2026-09-01",
           "until": "2026-09-02",
           "decision": "INCONCLUSIVE",
-          "reason": "LIFETIME_SOURCE_UNAVAILABLE_OR_MISALIGNED",
-          "total_orders": 0,
-          "terminal_orders": 0,
-          "terminal_rate_pct": null,
-          "roi_delivered_pct": null,
-          "net_delivered_mad": null
+          "reason": "INSUFFICIENT_ORDER_SAMPLE",
+          "total_orders": 5,
+          "terminal_orders": 1,
+          "terminal_rate_pct": 20,
+          "roi_delivered_pct": -100,
+          "net_delivered_mad": -105.3
         },
-        "current_72h_decision": "TRACKING_FIX",
-        "action_ar": "راجع التتبع وربط Meta مع Fighters"
+        "current_72h_decision": "OBSERVE",
+        "action_ar": "راقب ولا تتخذ تعديلا كبيرا حاليا"
       }
     ],
     "ads": [
@@ -117,9 +117,9 @@
         "delivery": "ACTIVE",
         "action": "KEEP",
         "reason": "CPA_AT_OR_BELOW_PRODUCT",
-        "spend": 23.84,
+        "spend": 23.85,
         "purchases": 1,
-        "cpa": 23.84,
+        "cpa": 23.85,
         "ctr_link": 1.9,
         "landing_page_rate": 80.36
       },
@@ -225,10 +225,10 @@
         "delivery": "ACTIVE",
         "action": "COST_WATCH",
         "reason": "CPA_ABOVE_PRODUCT",
-        "spend": 5.62,
+        "spend": 5.63,
         "purchases": 2,
-        "cpa": 2.81,
-        "ctr_link": 3.89,
+        "cpa": 2.82,
+        "ctr_link": 3.88,
         "landing_page_rate": 84.75
       },
       {
@@ -240,7 +240,7 @@
         "spend": 5.31,
         "purchases": 3,
         "cpa": 1.77,
-        "ctr_link": 4.33,
+        "ctr_link": 4.3,
         "landing_page_rate": 74.58
       },
       {
@@ -264,7 +264,7 @@
         "spend": 1.52,
         "purchases": 0,
         "cpa": null,
-        "ctr_link": 4.03,
+        "ctr_link": 4.02,
         "landing_page_rate": 90
       }
     ]
