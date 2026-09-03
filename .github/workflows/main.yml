@@ -1,16 +1,4 @@
 name: CMM Daily Meta Brief
-event_name = os.environ.get(
-    "GITHUB_EVENT_NAME",
-    ""
-)
-
-if event_name == "workflow_dispatch":
-    valid = False
-
-    print(
-        "Manual workflow_dispatch: "
-        "forcing report refresh"
-    )
 on:
   workflow_dispatch:
 
@@ -99,20 +87,20 @@ jobs:
                   print(
                       f"Existing report validation error: {exc}"
                   )
-                  valid = False
-
-event_name = os.environ.get(
-    "GITHUB_EVENT_NAME",
-    ""
-)
-
-if event_name == "workflow_dispatch":
-    valid = False
-
-    print(
-        "Manual workflow_dispatch: "
-        "forcing report refresh"
-    )
+                  valid = False  
+                  
+                 event_name = os.environ.get(
+                    "GITHUB_EVENT_NAME",
+                   ""
+                   )
+                   
+            if event_name == "workflow_dispatch":
+                 valid = False
+            
+                print(
+                    "Manual workflow_dispatch: "
+                    "forcing report refresh"
+                )
 
           with open(
               os.environ["GITHUB_OUTPUT"],
