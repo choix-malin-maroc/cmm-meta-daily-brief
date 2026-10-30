@@ -2,9 +2,9 @@
   "ok": true,
   "feed_version": "CMM_GITHUB_DAILY_BRIEF_V1",
   "source": "cmm-meta-monitor",
-  "report_date": "2026-10-28",
-  "generated_at": "2026-10-29T10:52:50.490Z",
-  "published_at": "2026-10-29T10:52:50.558415+00:00",
+  "report_date": "2026-10-29",
+  "generated_at": "2026-10-30T10:51:20.232Z",
+  "published_at": "2026-10-30T10:51:20.296183+00:00",
   "source_health": {
     "worker_ok": true,
     "daily_brief_ok": true
