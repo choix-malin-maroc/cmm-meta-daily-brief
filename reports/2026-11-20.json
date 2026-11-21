@@ -1,0 +1,18 @@
+{
+  "ok": true,
+  "feed_version": "CMM_GITHUB_DAILY_BRIEF_V1",
+  "source": "cmm-meta-monitor",
+  "report_date": "2026-11-20",
+  "generated_at": "2026-11-21T13:27:14.659Z",
+  "published_at": "2026-11-21T13:27:14.711119+00:00",
+  "source_health": {
+    "worker_ok": true,
+    "daily_brief_ok": true
+  },
+  "daily_brief": {
+    "version": "CMM_DAILY_BRIEF_V1",
+    "period": "last_72h",
+    "products": [],
+    "ads": []
+  }
+}
